@@ -20,8 +20,10 @@
 
 	tower.prototype.sayRange = function(sText) {
 		var self = this;
+		// console.log(self.firingRange);
 		return (self.verbose
-			? console.log(self.constructor.name + (sText || '--->Firing range = ' + self.firingRange + 'm')) : true);
+			? console.log(self.constructor.name + (sText || '--->Firing range = ' + self.fireRange + 'm'))
+			: true);
 	};
 	module.exports = tower;
 }).call(this);

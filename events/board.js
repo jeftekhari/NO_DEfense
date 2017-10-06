@@ -43,6 +43,7 @@
 		});
 
 		var listUnits = _.drop(data);
+		
 		_.each(listUnits, function(sInput) {
 			var botData = sInput.split(' ');
 			var botOpts =  {
@@ -51,6 +52,7 @@
 				distCurrent: parseInt(botData[1]),
 				speed: parseInt(botData[2])
 			};
+
 			var oUnit = new bot(botOpts);
 			self.Bots.push(oUnit);
 		});
@@ -76,12 +78,13 @@
 		var Enemies = _.sortBy(self.getBots(), ['distCurrent', function (o) {
 			return -1 * o.speed;
 		}]);
+		console.log(self.Enemies);
 
 		_.each(Enemies, function (oEnemy) {
 			if (oEnemy.distCurrent <= self.tower.fireRange) {
 				oEnemy.killed = true;
-				var Msg = 'The Tower killed [' + oEnemy.name + '] on turn [' + self.Turn + '] at a distance of [' + oEnemy.distCurrent + 'm';
-
+				var Msg = 'The Tower killed ~' + oEnemy.name + '~ on turn ~' + self.Turn + '~ at a distance of ~' + oEnemy.distCurrent + 'm~';
+				self.notify(Msg);
 				return false;
 			}
 		});
@@ -103,13 +106,14 @@
 
 	board.prototype.checkState = function () {
 		var self = this;
-
+		// console.log('bot-length is: ' + self.getBots().length);
 		if (self.getBots().length === 0) {
 			self.Result = {
 				state: 0,
 				message: 'Tower won in ' + self.Turn + 'turns!'
 			}
 		}
+
 		if (self.Result.state === null) {
 			_.each(self.Enemies, function (oEnemy) {
 				if (oEnemy.distCurrent === 0) {

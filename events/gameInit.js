@@ -27,6 +27,7 @@
 		self.board = new board({id: Chance.guid(), verbose: self.verbose});
 
 		self.board.setup(input)
+		// console.log(self.board.tower.fireRange);
 		self.board.tower.sayRange();
 
 		while (self.board.Result.state === null) {
