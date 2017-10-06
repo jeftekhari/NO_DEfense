@@ -1,10 +1,12 @@
 
 (function () {
 
+    var Chance = require('chance').Chance(Math.random);
 	var fs = require('fs');
 	var input = undefined;
 	var pkg = require('./package.json');
 	var path    =   require('path');
+    var gameInit = require('./events/gameInit');
 
 	var dataSRC     =   undefined;
 	var Args        =   process.argv.slice(2);
@@ -21,7 +23,7 @@
     console.info('==================================================================');
 
 
-    var gameInit = new roundInit;
-    gameInit.runGame(input);
+    var newGame = new gameInit ({id: Chance.guid(), verbose: true});
+    newGame.start(input);
     
 }).call(this);
