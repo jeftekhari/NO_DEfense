@@ -1,0 +1,5 @@
+60m
+BotA 100m 10m
+BotB 0m	10m
+BotC 5m 3m
+BotD 50m 20m

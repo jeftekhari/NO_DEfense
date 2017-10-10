@@ -3,6 +3,7 @@
 	var _ = require('lodash');
 	var Chance = require('chance').Chance(Math.random);
 
+	// Creating tower object
 	var tower = function tower (options) {
 		var self = this;
 		var defs = {
@@ -17,13 +18,11 @@
 	tower.prototype.constructor = tower;
 
 
-
+	//Display Tower's Range
 	tower.prototype.sayRange = function(sText) {
 		var self = this;
 		// console.log(self.firingRange);
-		return (self.verbose
-			? console.log(self.constructor.name + (sText || '--->Firing range = ' + self.fireRange + 'm'))
-			: true);
+		return console.log("Tower" + (sText || '--->Firing range = ' + self.fireRange + 'm'));
 	};
 	module.exports = tower;
 }).call(this);

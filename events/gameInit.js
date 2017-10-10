@@ -30,6 +30,7 @@
 		// console.log(self.board.tower.fireRange);
 		self.board.tower.sayRange();
 
+		//most important part
 		while (self.board.Result.state === null) {
 			self.board.nextTurn().playRound().checkState();
 		}

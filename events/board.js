@@ -78,12 +78,12 @@
 		var Enemies = _.sortBy(self.getBots(), ['distCurrent', function (o) {
 			return -1 * o.speed;
 		}]);
-		console.log(self.Enemies);
+		//console.log(self.Enemies);
 
 		_.each(Enemies, function (oEnemy) {
 			if (oEnemy.distCurrent <= self.tower.fireRange) {
 				oEnemy.killed = true;
-				var Msg = 'The Tower killed ~' + oEnemy.name + '~ on turn ~' + self.Turn + '~ at a distance of ~' + oEnemy.distCurrent + 'm~';
+				var Msg = 'The tower killed ~' + oEnemy.name + '~ on turn ~' + self.Turn + '~ at a distance of ~' + oEnemy.distCurrent + 'm~';
 				self.notify(Msg);
 				return false;
 			}
@@ -115,11 +115,11 @@
 		}
 
 		if (self.Result.state === null) {
-			_.each(self.Enemies, function (oEnemy) {
+			_.each(self.Bots, function (oEnemy) {
 				if (oEnemy.distCurrent === 0) {
 					self.Result = {
 						state: 1,
-						message: oEnemy.name + 'reaches the Tower!\n Game over at turn' + self.Turn
+						message: ' ' + oEnemy.name + ' reaches the Tower!\nGame over at turn ' + self.Turn + '.'
 					}
 
 					return false;
